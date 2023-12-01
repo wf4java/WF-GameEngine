@@ -39,7 +39,7 @@ public class Game {
     public static ProgressBarRender bar;
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         Game.build();
 

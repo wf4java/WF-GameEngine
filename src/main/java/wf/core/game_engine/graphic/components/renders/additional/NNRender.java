@@ -38,9 +38,9 @@ public class NNRender extends Component implements ComponentRender {
 
 
     public void calculate(){
-        if(autoResize) for (int i = 0; i < weights.length; i++) {
-            max = weights[i].numRows() > max ? weights[i].numRows() : max;
-            max = weights[i].numCols() > max ? weights[i].numCols() : max;
+        if(autoResize) for (SimpleMatrix weight : weights) {
+            max = weight.numRows() > max ? weight.numRows() : max;
+            max = weight.numCols() > max ? weight.numCols() : max;
         }
         points = new Point[weights.length + 1][];
         for (int i = 0; i < weights.length; i++){
