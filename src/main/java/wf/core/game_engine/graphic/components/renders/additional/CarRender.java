@@ -6,9 +6,9 @@ package wf.core.game_engine.graphic.components.renders.additional;
 import wf.core.game_engine.graphic.components.renders.ImageRender;
 import wf.core.game_engine.graphic.components.renders.LineRender;
 import wf.core.game_engine.graphic.components.renders.RayRender;
-import wf.core.game_engine.graphic.components.utils_models.Line;
-import wf.core.game_engine.graphic.components.utils_models.Ray;
-import wf.core.game_engine.graphic.components.utils_models.Point;
+import wf.core.game_engine.graphic.components.models.Line;
+import wf.core.game_engine.graphic.components.models.Ray;
+import wf.core.game_engine.graphic.components.models.Point;
 import wf.core.game_engine.graphic.interfaces.ComponentRender;
 import wf.core.game_engine.graphic.utils.PosUtils;
 
@@ -17,20 +17,20 @@ import java.awt.geom.AffineTransform;
 
 public class CarRender extends ImageRender implements ComponentRender {
 
-    public String name;
-    public double speed;
-    public double sensitivity;
-    public double far;
-    public LineRender[] lines = new LineRender[4];
-    public RayRender[] ai_lines = new RayRender[8];
-    public boolean rayFullRender;
-    public boolean rayRender = true;
-    public int rayWidth = 3;
-    public Color rayColor = Color.WHITE;
-    public boolean inGame = true;
-    public Point spawnPoint;
-    public double spawnRotation;
-    public double ticks;
+    private String name;
+    private double speed;
+    private double sensitivity;
+    private double far;
+    private LineRender[] lines = new LineRender[4];
+    private RayRender[] ai_lines = new RayRender[8];
+    private boolean rayFullRender;
+    private boolean rayRender = true;
+    private int rayWidth = 3;
+    private Color rayColor = Color.WHITE;
+    private boolean inGame = true;
+    private Point spawnPoint;
+    private double spawnRotation;
+    private int ticks;
 
 
 
@@ -159,5 +159,118 @@ public class CarRender extends ImageRender implements ComponentRender {
         if(ai_lines[0] != null && rayRender) for (RayRender ray : ai_lines) ray.render(g);
         super.render(g);
         if(lines[0] != null) for(LineRender line : lines) line.render(g);
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public double getSpeed() {
+        return speed;
+    }
+
+    public void setSpeed(double speed) {
+        this.speed = speed;
+    }
+
+    public double getSensitivity() {
+        return sensitivity;
+    }
+
+    public void setSensitivity(double sensitivity) {
+        this.sensitivity = sensitivity;
+    }
+
+    public double getFar() {
+        return far;
+    }
+
+    public void setFar(double far) {
+        this.far = far;
+    }
+
+    public LineRender[] getLines() {
+        return lines;
+    }
+
+    public void setLines(LineRender[] lines) {
+        this.lines = lines;
+    }
+
+    public RayRender[] getAi_lines() {
+        return ai_lines;
+    }
+
+    public void setAi_lines(RayRender[] ai_lines) {
+        this.ai_lines = ai_lines;
+    }
+
+    public boolean isRayFullRender() {
+        return rayFullRender;
+    }
+
+    public void setRayFullRender(boolean rayFullRender) {
+        this.rayFullRender = rayFullRender;
+    }
+
+    public boolean isRayRender() {
+        return rayRender;
+    }
+
+    public void setRayRender(boolean rayRender) {
+        this.rayRender = rayRender;
+    }
+
+    public int getRayWidth() {
+        return rayWidth;
+    }
+
+    public void setRayWidth(int rayWidth) {
+        this.rayWidth = rayWidth;
+    }
+
+    public Color getRayColor() {
+        return rayColor;
+    }
+
+    public void setRayColor(Color rayColor) {
+        this.rayColor = rayColor;
+    }
+
+    public boolean isInGame() {
+        return inGame;
+    }
+
+    public void setInGame(boolean inGame) {
+        this.inGame = inGame;
+    }
+
+    public Point getSpawnPoint() {
+        return spawnPoint;
+    }
+
+    public void setSpawnPoint(Point spawnPoint) {
+        this.spawnPoint = spawnPoint;
+    }
+
+    public double getSpawnRotation() {
+        return spawnRotation;
+    }
+
+    public void setSpawnRotation(double spawnRotation) {
+        this.spawnRotation = spawnRotation;
+    }
+
+    public int getTicks() {
+        return ticks;
+    }
+
+    public void setTicks(int ticks) {
+        this.ticks = ticks;
     }
 }

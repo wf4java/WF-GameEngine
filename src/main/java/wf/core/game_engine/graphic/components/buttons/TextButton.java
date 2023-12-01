@@ -26,7 +26,6 @@ public class TextButton extends TextRender implements ButtonListener {
     private BorderRender border;
 
 
-
     public TextButton(Runnable runnable, double x, double y, int width, int height, Color backgroundColor, double textX, double textY, String text, Float fontSize, Color textColor, int button, Color hoverColor, Color clickColor, int roundW, int roundH, BorderRender border) {
         super(text, x + textX, y + textY, fontSize, textColor);
         this.x = x;
@@ -42,12 +41,6 @@ public class TextButton extends TextRender implements ButtonListener {
         this.roundH = roundH;
         this.border = border;
     }
-
-
-
-
-
-
 
 
 

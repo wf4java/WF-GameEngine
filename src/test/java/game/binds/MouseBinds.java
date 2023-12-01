@@ -1,7 +1,7 @@
 package game.binds;
 
 import game.borders.Borders;
-import wf.core.game_engine.graphic.components.utils_models.Point;
+import wf.core.game_engine.graphic.components.models.Point;
 import wf.core.game_engine.graphic.interfaces.listeners.mouse.MouseDraggedListener;
 import wf.core.game_engine.graphic.interfaces.listeners.mouse.MousePressedListener;
 import wf.core.game_engine.graphic.utils.PosUtils;

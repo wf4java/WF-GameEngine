@@ -1,8 +1,8 @@
 package game.borders;
 
 
-import wf.core.game_engine.graphic.components.utils_models.Line;
-import wf.core.game_engine.graphic.components.utils_models.Point;
+import wf.core.game_engine.graphic.components.models.Line;
+import wf.core.game_engine.graphic.components.models.Point;
 
 public class Borders {
 

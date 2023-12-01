@@ -7,8 +7,8 @@ import wf.core.game_engine.neural_network.NeuralNetwork;
 
 public class CarPerson {
 
-    public NeuralNetwork nn;
-    public CarRender car;
+    private NeuralNetwork nn;
+    private CarRender car;
 
 
     public CarPerson(CarRender car, int[] nodes){
@@ -18,7 +18,7 @@ public class CarPerson {
     }
 
     public void guess(){
-        if(car.inGame) {
+        if(car.isInGame()) {
             double[] gs = nn.guess(car.getData());
 
             if(gs.length == 1){
@@ -38,4 +38,19 @@ public class CarPerson {
     }
 
 
+    public NeuralNetwork getNn() {
+        return nn;
+    }
+
+    public void setNn(NeuralNetwork nn) {
+        this.nn = nn;
+    }
+
+    public CarRender getCar() {
+        return car;
+    }
+
+    public void setCar(CarRender car) {
+        this.car = car;
+    }
 }

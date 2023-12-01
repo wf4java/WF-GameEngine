@@ -38,7 +38,7 @@ public class NeuralNetwork {
         if(nodes.length < 3) throw new IllegalArgumentException("Less than 3 layers are not allowed");
 
         this.inputNodes = nodes[0];
-        this.hiddenNodes = Arrays.copyOfRange(hiddenNodes, 1, hiddenNodes.length - 1);
+        this.hiddenNodes = Arrays.copyOfRange(nodes, 1, nodes.length - 1);
         this.outputNodes = nodes[nodes.length - 1];
 
         initializeDefaultValues();

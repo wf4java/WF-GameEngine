@@ -4,7 +4,7 @@ import game.Game;
 import game.ai.CarPerson;
 import game.utils.CarUtils;
 import wf.core.game_engine.graphic.components.renders.LineRender;
-import wf.core.game_engine.graphic.components.utils_models.Line;
+import wf.core.game_engine.graphic.components.models.Line;
 import wf.core.game_engine.graphic.interfaces.PhysicCalculate;
 import wf.core.game_engine.graphic.utils.PosUtils;
 import wf.core.game_engine.neural_network.NeuralNetwork;
@@ -38,11 +38,11 @@ public class Physic implements PhysicCalculate {
         }
 
         for (CarPerson person : Game.persons) {
-            if (person.car.inGame) {
-                person.car.moveForward();
-                person.car.setLines(2);
-                person.car.setAi_lines(Game.borders.toArray(new Line[0]));
-                person.car.ticks++;
+            if (person.getCar().isInGame()) {
+                person.getCar().moveForward();
+                person.getCar().setLines(2);
+                person.getCar().setAi_lines(Game.borders.toArray(new Line[0]));
+                person.getCar().setTicks(person.getCar().getTicks() + 1);;
                 person.guess();
             }
         }
@@ -50,36 +50,36 @@ public class Physic implements PhysicCalculate {
 
         //Collision check
         for (CarPerson person : Game.persons) {
-            if (!person.car.inGame) continue;
-            for (LineRender lr : person.car.lines) {
+            if (!person.getCar().isInGame()) continue;
+            for (LineRender lr : person.getCar().getLines()) {
                 for (Line l : Game.borders) {
                     if (!PosUtils.intersectsLines(lr.getLine(), l)) continue;
-                    person.car.inGame = false;
+                    person.getCar().setInGame(false);
                     break;
                 }
             }
         }
 
         carsLeft = 0;
-        Game.persons.forEach(p -> { if(p.car.inGame) carsLeft++; });
+        Game.persons.forEach(p -> { if(p.getCar().isInGame()) carsLeft++; });
 
 
         if(carsLeft == 0) {
             CarPerson lastBestCar = CarUtils.getMaxTickCar(new ArrayList<>(Game.persons));
-            lastBestNN = lastBestCar.nn.copy();
+            lastBestNN = lastBestCar.getNn().copy();
             genetics++;
             for(CarPerson p : Game.persons) {
                 double mutate = new Random().nextDouble() > 0.8 ? new Random().nextDouble() * 1.2 : 0.3;
                 if (mutate > 1)
-                    p.nn = p.nn.merge(new NeuralNetwork(p.nn.getInputNodes(), p.nn.getHiddenNodes() , p.nn.getOutputNodes()), 1 - (mutate - 5));
+                    p.setNn(p.getNn().merge(new NeuralNetwork(p.getNn().getInputNodes(), p.getNn().getHiddenNodes() , p.getNn().getOutputNodes()), 1 - (mutate - 5)));
                 else {
                     if (bestNN == null) bestNN = lastBestNN;
-                    if (lastBestCar.car.ticks > bestNNResult) { bestNN = lastBestNN; bestNNResult = lastBestCar.car.ticks; }
-                    p.nn = p.nn.merge(bestNN);
-                    p.nn.mutate(mutate);
+                    if (lastBestCar.getCar().getTicks() > bestNNResult) { bestNN = lastBestNN; bestNNResult = lastBestCar.getCar().getTicks(); }
+                    p.setNn(p.getNn().merge(bestNN));
+                    p.getNn().mutate(mutate);
                 }
 
-                p.car.respawn();
+                p.getCar().respawn();
             }
             Game.nnRender.setWeights(lastBestNN.getWeights());
             Game.nnRender.calculate();

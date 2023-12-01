@@ -3,7 +3,7 @@ package wf.core.game_engine.graphic.components.renders.additional;
 
 import org.ejml.simple.SimpleMatrix;
 import wf.core.game_engine.graphic.interfaces.ComponentRender;
-import wf.core.game_engine.graphic.components.utils_models.Point;
+import wf.core.game_engine.graphic.components.models.Point;
 import wf.core.game_engine.graphic.components.Component;
 
 

@@ -2,8 +2,8 @@ package wf.core.game_engine.graphic.utils;
 
 
 
-import wf.core.game_engine.graphic.components.utils_models.Line;
-import wf.core.game_engine.graphic.components.utils_models.Point;
+import wf.core.game_engine.graphic.components.models.Line;
+import wf.core.game_engine.graphic.components.models.Point;
 
 import java.awt.geom.Line2D;
 

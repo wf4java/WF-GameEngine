@@ -19,6 +19,7 @@ import java.awt.event.*;
 import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 
 public class WFengine extends JFrame{
@@ -41,13 +42,13 @@ public class WFengine extends JFrame{
     private final Thread renderTask;
     private final Thread rateTask ;
 
-    private List<ComponentRender> componentRenders = new ArrayList<>();
-    private List<ButtonListener> buttons = new ArrayList<>();
-    private List<InputListener> inputs = new ArrayList<>();
+    private List<ComponentRender> componentRenders = new CopyOnWriteArrayList<>();
+    private List<ButtonListener> buttons = new CopyOnWriteArrayList<>();
+    private List<InputListener> inputs = new CopyOnWriteArrayList<>();
 
 
-    private List<PreRender> preRenders = new ArrayList<>();
-    private List<PhysicCalculate> physics = new ArrayList<>();
+    private List<PreRender> preRenders = new CopyOnWriteArrayList<>();
+    private List<PhysicCalculate> physics = new CopyOnWriteArrayList<>();
 
     private List<KeyPressedListener> keyPressedListeners = new ArrayList<>();
     private List<KeyReleasedListener> keyReleasedListeners = new ArrayList<>();
@@ -77,7 +78,6 @@ public class WFengine extends JFrame{
         this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2 - 20);
 
         this.frame = this;
-
 
 
 
@@ -214,10 +214,10 @@ public class WFengine extends JFrame{
     public void removeComponent(ComponentRender cr){
         componentRenders.remove(cr);
     }
-    public void removeComponent(PreRender cr){
+    public void removePreRender(PreRender cr){
         preRenders.remove(cr);
     }
-    public void removeComponent(PhysicCalculate cr){
+    public void removePhysicCalculate(PhysicCalculate cr){
         physics.remove(cr);
     }
 

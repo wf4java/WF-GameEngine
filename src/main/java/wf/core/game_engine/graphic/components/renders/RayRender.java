@@ -3,8 +3,8 @@ package wf.core.game_engine.graphic.components.renders;
 
 
 
-import wf.core.game_engine.graphic.components.utils_models.Line;
-import wf.core.game_engine.graphic.components.utils_models.Ray;
+import wf.core.game_engine.graphic.components.models.Line;
+import wf.core.game_engine.graphic.components.models.Ray;
 import wf.core.game_engine.graphic.interfaces.ComponentRender;
 
 import java.awt.*;

@@ -1,4 +1,4 @@
-package wf.core.game_engine.graphic.components.utils_models;
+package wf.core.game_engine.graphic.components.models;
 
 
 import wf.core.game_engine.graphic.utils.PosUtils;
